@@ -1,11 +1,12 @@
 import React from "react";
+import * as S from './styled';
 
 export default function Table({ movies }) {
   return (
-    <div>
+    <S.Wrapper>
       {movies.map((item, index) => {
         return <div key={index}>{item.title}</div>;
       })}
-    </div>
+    </S.Wrapper>
   );
 }
