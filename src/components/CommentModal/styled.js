@@ -19,7 +19,7 @@ export const ModalWrapper = styled.div`
 export const Wrapper = styled.div`
   background-color: #f2f2f2;
   width: 50%;
-  max-width: 460px;
+  max-width: 440px;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -66,10 +66,10 @@ export const Comment = styled.li`
 export const Text = styled.p`
   margin-left: 1rem;
   width: 76%;
-  padding: 0.578rem 1rem;
+  padding: 0.75rem 1rem;
   color: var(--white-text);
   background-color: var(--blue);
-  font-size: 0.678rem;
+  font-size: 0.75rem;
 `;
 
 export const Footer = styled.footer`
