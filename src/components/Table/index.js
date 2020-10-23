@@ -1,6 +1,6 @@
 import React from "react";
 import { useTable } from "react-table";
-import { Auto } from "styled-icons/crypto";
+import * as S from "./styled";
 
 function Table({ movies }) {
   const data = React.useMemo(() => [...movies], [movies]);
@@ -53,7 +53,7 @@ function Table({ movies }) {
     "History",
     "Crime",
     "War",
-  ]
+  ];
 
   const {
     getTableProps,
@@ -64,68 +64,55 @@ function Table({ movies }) {
   } = useTable({ columns, data });
 
   return (
-    <div style={{maxWidth: "760px", margin: "0 auto"}}>
-    <table {...getTableProps()} style={{ border: "solid 1px blue" }}>
-      <thead>
-        {headerGroups.map((headerGroup) => (
-          <tr {...headerGroup.getHeaderGroupProps()}>
-            {headerGroup.headers.map((column) => (
-              <th
-                {...column.getHeaderProps()}
-                style={{
-                  borderBottom: "solid 3px red",
-                  background: "aliceblue",
-                  color: "black",
-                  fontWeight: "bold",
-                }}
-              >
-                {column.render("Header")}
-              </th>
-            ))}
-          </tr>
-        ))}
-      </thead>
-      <tbody {...getTableBodyProps()}>
-        <tr>
-          <td style={{padding: "10px", background: "#fff"}}>
-            <input type="text" placeholder="search..."/>
-          </td>
-          <td style={{padding: "10px", background: "#fff"}}></td>
-          <td style={{padding: "10px", background: "#fff"}}></td>
-          <td style={{padding: "10px", background: "#fff"}}></td>
-          <td style={{padding: "10px", background: "#fff"}}></td>
-          <td style={{padding: "10px", background: "#fff"}}>
-           <select>
-              {genres.map((item, index) => <option key={index}>{item}</option>)}
-           </select>
-
-          </td>
-        </tr>
-        {rows.map((row) => {
-          prepareRow(row);
-          return (
-            <tr {...row.getRowProps()}>
-              {row.cells.map((cell) => {
-                return (
-                  <td
-                    {...cell.getCellProps()}
-                    style={{
-                      padding: "10px",
-                      border: "solid 1px gray",
-                      background: "papayawhip",
-                      color: "#222",
-                    }}
-                  >
-                    {cell.render("Cell")}
-                  </td>
-                );
-              })}
-            </tr>
-          );
-        })}
-      </tbody>
-    </table>
-    </div>
+    <S.Wrapper>
+      <S.Table {...getTableProps()} style={{ border: "solid 1px blue" }}>
+        <S.Thead>
+          {headerGroups.map((headerGroup) => (
+            <S.Tr {...headerGroup.getHeaderGroupProps()}>
+              {headerGroup.headers.map((column) => (
+                <S.Th {...column.getHeaderProps()}>
+                  {column.render("Header")}
+                </S.Th>
+              ))}
+            </S.Tr>
+          ))}
+          <S.Tr>
+            <S.Td>
+              <S.Input type="text" placeholder="search..." />
+            </S.Td>
+            <S.Td></S.Td>
+            <S.Td></S.Td>
+            <S.Td></S.Td>
+            <S.Td></S.Td>
+            <S.Td>
+              <S.Select>
+                {genres.map((item, index) => (
+                  <option key={index}>{item}</option>
+                ))}
+              </S.Select>
+            </S.Td>
+          </S.Tr>
+        </S.Thead>
+      <S.Content>
+        <tbody {...getTableBodyProps()}>
+            {rows.map((row, index) => {
+              prepareRow(row);
+              return (
+                <S.TrContent {...row.getRowProps()} white={index % 2 === 0}>
+                  {row.cells.map((cell) => {
+                    return (
+                      <S.TdContent {...cell.getCellProps()}>
+                        {cell.render("Cell")}
+                      </S.TdContent>
+                    );
+                  })}
+                </S.TrContent>
+              );
+            })}
+          </tbody>
+      </S.Content>
+            </S.Table>
+    </S.Wrapper>
   );
 }
 

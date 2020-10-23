@@ -14,6 +14,7 @@ export const GlobalStyle = createGlobalStyle`
     --light-grey: #F2F2F2;
     --white-text: #ffffff;
     --black-text: #222;
+    --grey: #c3c3c3;
   }
   body, html {
     padding: 0;
@@ -26,7 +27,7 @@ export const GlobalStyle = createGlobalStyle`
   h1, h2, h3, h4, h5, h6 {
     font-family: NunitoSans, sans-serif;
   }
-  p, label, span, li {
+  p, label, span, li, th, tr, thead, td {
     font-family: Roboto, sans-serif;
     font-weight: 300;
   }
