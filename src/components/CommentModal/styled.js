@@ -48,6 +48,11 @@ export const BackIcon = styled(ArrowBack)`
   margin-left: 0.5rem;
   display: inline;
   cursor: pointer;
+
+  :hover {
+       opacity: 0.9;
+   }
+   
   ${media.lessThan("medium")`
     margin-left: 0.2rem;
   `};
@@ -72,7 +77,7 @@ export const Text = styled.p`
   font-size: 0.75rem;
 `;
 
-export const Footer = styled.footer`
+export const FormFooter = styled.form`
   background-color: #fdfdfd;
   padding: 0rem 1rem;
   height: 60px;
@@ -80,7 +85,7 @@ export const Footer = styled.footer`
   align-items: center;
 `;
 
-export const Input = styled.textarea`
+export const Input = styled.input`
   background-color: inherit;
   width: 90%;
   border: none;
