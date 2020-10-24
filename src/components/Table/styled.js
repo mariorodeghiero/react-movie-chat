@@ -40,6 +40,11 @@ export const TrContent = styled.tr`
    background-color:  ${props => (props.white ? "var(--light-grey)" : "var(--white)")};
    color: var(--black-text);
    padding: 1.25rem;
+   cursor: pointer;
+
+   :hover {
+       opacity: 0.9;
+   }
 `;
 
 export const TdContent = styled.td`

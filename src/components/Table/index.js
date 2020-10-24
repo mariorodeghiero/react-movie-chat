@@ -2,7 +2,7 @@ import React from "react";
 import { useTable } from "react-table";
 import * as S from "./styled";
 
-function Table({ movies }) {
+function Table({ movies, handleMovie }) {
   const data = React.useMemo(() => [...movies], [movies]);
 
   const columns = React.useMemo(
@@ -97,8 +97,10 @@ function Table({ movies }) {
         <tbody {...getTableBodyProps()}>
             {rows.map((row, index) => {
               prepareRow(row);
+              console.log(row.values.title)
+
               return (
-                <S.TrContent {...row.getRowProps()} white={index % 2 === 0}>
+                <S.TrContent {...row.getRowProps()} white={index % 2 === 0} onClick={() => handleMovie(row.values.title)}>
                   {row.cells.map((cell) => {
                     return (
                       <S.TdContent {...cell.getCellProps()}>
