@@ -2,25 +2,33 @@ import React from "react";
 import Table from "./components/Table";
 import CommentModal from "./components/CommentModal";
 import Header from "./components/Header";
-import movies from "./db/movies.json";
+import Loader from "./components/Loader";
 import { GlobalStyle } from "./utils/styled";
+
 import { database } from "./firebase";
+import axios from "axios";
 
 export class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      movies: [],
       comments: {},
       modalOpen: false,
       selectedMovie: "",
     };
   }
 
-  componentDidMount() {
+  async componentDidMount() {
+    axios.defaults.headers.post['Content-Type'] ='application/json;charset=utf-8';
+    axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
+    const response = await axios.get("/web/movies.json");
     this.setState({ isLoading: true });
     this.comments = database.ref("comments");
     this.comments.on("value", (snapshot) => {
       this.setState({
+        isLoading: false,
+        movies: response.data,
         comments: snapshot.val(),
       });
     });
@@ -46,29 +54,41 @@ export class App extends React.Component {
   };
 
   handleMovie = (movie) => {
-    this.setState({selectedMovie: movie})
-    this.handleModalOpen()
-  }
+    this.setState({ selectedMovie: movie });
+    this.handleModalOpen();
+  };
 
   handleModalOpen = () => {
-    this.setState({modalOpen: !this.state.modalOpen})
-  }
+    this.setState({ modalOpen: !this.state.modalOpen });
+  };
 
   render() {
-    const { comments, modalOpen, selectedMovie } = this.state;
+    const {
+      comments,
+      modalOpen,
+      selectedMovie,
+      movies,
+      isLoading,
+    } = this.state;
     return (
-      <div>
-        <GlobalStyle />
-        <Header title="Movie chat application" />
-        <Table movies={movies} handleMovie={this.handleMovie}/>
-        <CommentModal
-          movie={selectedMovie}
-          comments={comments}
-          modalOpen={modalOpen}
-          sendComment={this.sendComment}
-          handleModalOpen={this.handleModalOpen}
-        />
-      </div>
+      <>
+        {isLoading ? (
+          <Loader/>
+        ) : (
+          <div>
+            <GlobalStyle />
+            <Header title="Movie chat application" />
+            <Table movies={movies} handleMovie={this.handleMovie} />
+            <CommentModal
+              movie={selectedMovie}
+              comments={comments}
+              modalOpen={modalOpen}
+              sendComment={this.sendComment}
+              handleModalOpen={this.handleModalOpen}
+            />
+          </div>
+        )}
+      </>
     );
   }
 }
