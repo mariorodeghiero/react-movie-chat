@@ -57,7 +57,7 @@ function Table({ movies, handleMovie }) {
 
   return (
     <S.Wrapper>
-      <S.Table {...getTableProps()} style={{ border: "solid 1px blue" }}>
+      <S.Table {...getTableProps()}>
         <S.Thead>
           {headerGroups.map((headerGroup) => (
             <S.Tr {...headerGroup.getHeaderGroupProps()}>

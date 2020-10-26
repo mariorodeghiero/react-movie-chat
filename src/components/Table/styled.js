@@ -9,6 +9,7 @@ export const Wrapper = styled.div`
 export const Table = styled.table`
     width: 100%;
     display: grid;
+    border: 1px solid var(--grey);
 `;
 
 export const Content = styled.div`
@@ -43,7 +44,7 @@ export const TrContent = styled.tr`
    cursor: pointer;
 
    :hover {
-       opacity: 0.9;
+       opacity: 0.6;
    }
 `;
 
