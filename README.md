@@ -11,6 +11,14 @@
 - [Node](https://nodejs.org/en/)
 - [NPM Package Manager](https://www.npmjs.com/)
 
+
+## Built with
+
+- [Create-react-app](https://github.com/facebook/create-react-app) A tool to help build react applications.
+- [react-table](https://github.com/tannerlinsley/react-table) Lightweight and extensible data tables for React.
+- [styled-components](https://styled-components.com/) - Be able to style the application using CSS in JS.
+- [Firebase](https://firebase.google.com/) - Be able to use a realtime database.
+
 ## Install
 
 First, clone the repo via git:
