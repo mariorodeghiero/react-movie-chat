@@ -34,7 +34,6 @@ export class App extends React.Component {
         comments: [...comments[movieKey].comments, comment],
         title,
       };
-      console.log("test", movieKey);
       database.ref().update(data);
     } else {
       const id = database.ref().child("comments").push().key;

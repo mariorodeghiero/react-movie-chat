@@ -50,19 +50,9 @@ export const TrContent = styled.tr`
 export const TdContent = styled.td`
    color: var(--black-text);
    padding: 1.25rem;
+   width: 100%;
 `;
 
-export const Input = styled.input`
-   color: var(--black-text);
-   padding: 0.5rem;
-   border: 1px solid var(--grey);
-   outline: 0;
-`;
-
-export const Select = styled.select`
-   color: var(--black-text);
-   padding: 0.5rem;
-   background-color: var(--white);
-   border: 1px solid var(--grey);
-   outline: 0;
+export const Filters = styled.div`
+   padding-top: 0.5rem;
 `;

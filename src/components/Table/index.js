@@ -1,5 +1,7 @@
 import React from "react";
-import { useTable } from "react-table";
+import { useTable, useFilters } from "react-table";
+import { SelectFilter } from "../SelectFilter/index.";
+import { ColumnFilter } from "../ColumnFilter/index.";
 import * as S from "./styled";
 
 function Table({ movies, handleMovie }) {
@@ -9,51 +11,41 @@ function Table({ movies, handleMovie }) {
     () => [
       {
         Header: "Title",
-        accessor: "title", // accessor is the "key" in the data
+        accessor: "title",
+        Filter: ColumnFilter,
       },
       {
         Header: "Year",
         accessor: "year",
+        Filter: ColumnFilter,
+        disableFilters: true,
       },
       {
         Header: "Runtime",
         accessor: "runtime",
+        Filter: ColumnFilter,
+        disableFilters: true,
       },
       {
         Header: "Revenue",
         accessor: "revenue",
+        Filter: ColumnFilter,
+        disableFilters: true,
       },
       {
         Header: "Rating",
         accessor: "rating",
+        Filter: ColumnFilter,
+        disableFilters: true,
       },
       {
         Header: "Genres",
         accessor: "genre",
+        Filter: SelectFilter,
       },
     ],
     []
   );
-
-  const genres = [
-    "All",
-    "Action",
-    "Adventure",
-    "Sci-Fi",
-    "Horror",
-    "Thriller",
-    "Animation",
-    "Comedy",
-    "Family",
-    "Fantasy",
-    "Drama",
-    "Music",
-    "Biography",
-    "Romance",
-    "History",
-    "Crime",
-    "War",
-  ];
 
   const {
     getTableProps,
@@ -61,7 +53,7 @@ function Table({ movies, handleMovie }) {
     headerGroups,
     rows,
     prepareRow,
-  } = useTable({ columns, data });
+  } = useTable({ columns, data }, useFilters);
 
   return (
     <S.Wrapper>
@@ -72,35 +64,24 @@ function Table({ movies, handleMovie }) {
               {headerGroup.headers.map((column) => (
                 <S.Th {...column.getHeaderProps()}>
                   {column.render("Header")}
+                  <S.Filters>
+                    {column.canFilter ? column.render("Filter") : null}
+                  </S.Filters>
                 </S.Th>
               ))}
             </S.Tr>
           ))}
-          <S.Tr>
-            <S.Td>
-              <S.Input type="text" placeholder="search..." />
-            </S.Td>
-            <S.Td></S.Td>
-            <S.Td></S.Td>
-            <S.Td></S.Td>
-            <S.Td></S.Td>
-            <S.Td>
-              <S.Select>
-                {genres.map((item, index) => (
-                  <option key={index}>{item}</option>
-                ))}
-              </S.Select>
-            </S.Td>
-          </S.Tr>
         </S.Thead>
-      <S.Content>
-        <tbody {...getTableBodyProps()}>
+        <S.Content>
+          <tbody {...getTableBodyProps()}>
             {rows.map((row, index) => {
               prepareRow(row);
-              console.log(row.values.title)
-
               return (
-                <S.TrContent {...row.getRowProps()} white={index % 2 === 0} onClick={() => handleMovie(row.values.title)}>
+                <S.TrContent
+                  {...row.getRowProps()}
+                  white={index % 2 === 0}
+                  onClick={() => handleMovie(row.values.title)}
+                >
                   {row.cells.map((cell) => {
                     return (
                       <S.TdContent {...cell.getCellProps()}>
@@ -112,8 +93,8 @@ function Table({ movies, handleMovie }) {
               );
             })}
           </tbody>
-      </S.Content>
-            </S.Table>
+        </S.Content>
+      </S.Table>
     </S.Wrapper>
   );
 }
