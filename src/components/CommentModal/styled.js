@@ -62,6 +62,11 @@ export const Content = styled.ul`
   min-height: 300px;
 `;
 
+export const Box = styled.div`
+  max-height: 300px;
+  overflow: auto;
+`;
+
 export const Comment = styled.li`
   padding: 1rem;
   display: flex;

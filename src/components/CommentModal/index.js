@@ -21,20 +21,23 @@ export default function CommentModal({
           <S.Title>{movie}</S.Title>
         </S.Header>
         <S.Content>
-          {movieKey &&
-            comments[movieKey].comments.map((item, index) => {
-              return (
-                <S.Comment key={index}>
-                  <Avatar />
-                  <S.Text>{item}</S.Text>
-                </S.Comment>
-              );
-            })}
+          <S.Box>
+            {movieKey &&
+              comments[movieKey].comments.map((item, index) => {
+                return (
+                  <S.Comment key={index}>
+                    <Avatar />
+                    <S.Text>{item}</S.Text>
+                  </S.Comment>
+                );
+              })}
+          </S.Box>
         </S.Content>
         <S.FormFooter
           onSubmit={(event) => {
             event.preventDefault()
             sendComment(inputValue, movie, movieKey)
+            setInputValue("")
           }
         }
         >

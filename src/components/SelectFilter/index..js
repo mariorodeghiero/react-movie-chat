@@ -1,25 +1,6 @@
 import React from "react";
 import * as S from "./styled";
 
-const genres = [
-  "Action",
-  "Adventure",
-  "Sci-Fi",
-  "Horror",
-  "Thriller",
-  "Animation",
-  "Comedy",
-  "Family",
-  "Fantasy",
-  "Drama",
-  "Music",
-  "Biography",
-  "Romance",
-  "History",
-  "Crime",
-  "War",
-];
-
 export const SelectFilter = ({ column }) => {
   const { filterValue, setFilter, preFilteredRows, id } = column;
   const options = React.useMemo(() => {
