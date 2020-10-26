@@ -20,7 +20,7 @@ export const GlobalStyle = createGlobalStyle`
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: antialiased;
     font-smoothing: antialiased;
-    background: #222;
+    color: #fff;
   }
   h1, h2, h3, h4, h5, h6 {
     font-family: NunitoSans, sans-serif;
