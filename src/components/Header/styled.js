@@ -7,4 +7,5 @@ export const Wrapper = styled.div`
 
 export const Title = styled.h1`
     font-size: 2rem;
+    color: var(--black-text)
 `;
