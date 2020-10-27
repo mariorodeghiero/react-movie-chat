@@ -4,11 +4,24 @@ import * as S from "./styled";
 export const SelectFilter = ({ column }) => {
   const { filterValue, setFilter, preFilteredRows, id } = column;
   const options = React.useMemo(() => {
-    const options = new Set()
-    preFilteredRows.forEach(row => {
-      options.add(row.values[id])
-    })
-    return [...options.values()]
+    return [
+      "Action",
+      "Adventure",
+      "Sci-Fi",
+      "Horror",
+      "Thriller",
+      "Animation",
+      "Comedy",
+      "Family",
+      "Fantasy",
+      "Drama",
+      "Music",
+      "Biography",
+      "Romance",
+      "History",
+      "Crime",
+      "War",
+    ]
   }, [id, preFilteredRows])
 
   return (

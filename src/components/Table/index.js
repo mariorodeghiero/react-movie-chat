@@ -84,7 +84,7 @@ function Table({ movies, handleMovie }) {
                 >
                   {row.cells.map((cell) => {
                     return (
-                      <S.TdContent {...cell.getCellProps()}>
+                      <S.TdContent {...cell.getCellProps()} colspan="2">
                         {cell.render("Cell")}
                       </S.TdContent>
                     );

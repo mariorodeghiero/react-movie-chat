@@ -27,6 +27,12 @@ export const Wrapper = styled.div`
   border-radius: 3px;
   animation: 0.75s ${FadeIn} ease-in;
   box-sizing: border-box;
+
+  ${media.lessThan('medium')`
+      width: 80%;
+        max-width: 360px;
+        max-height: 460px;
+  `};
 `;
 
 export const Header = styled.header`
