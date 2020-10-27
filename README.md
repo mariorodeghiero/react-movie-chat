@@ -19,6 +19,14 @@
 - [styled-components](https://styled-components.com/) - Be able to style the application using CSS in JS.
 - [Firebase](https://firebase.google.com/) - Be able to use a realtime database.
 
+## If I have more time
+
+I would like:
+
+- To add tests using jest + enzyme
+- To fix the genres text
+- To improve the mobile experience 
+
 ## Install
 
 First, clone the repo via git:
