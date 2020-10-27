@@ -64,7 +64,7 @@ export const TrContent = styled.tr`
   padding: 1.25rem;
   cursor: pointer;
   :hover {
-    opacity: 0.9;
+    opacity: 0.6;
   }
 `;
 
